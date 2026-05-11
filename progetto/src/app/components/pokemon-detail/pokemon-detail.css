@@ -1,0 +1,9 @@
+img {
+  transition: transform 0.2s;
+}
+img:hover {
+  transform: scale(1.15);
+}
+.progress {
+  border-radius: 4px;
+}

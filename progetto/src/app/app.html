@@ -1,0 +1,24 @@
+<div class="container-fluid px-0">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" routerLink="/types">
+        🔴 PokéExplorer
+      </a>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/types" routerLinkActive="active">
+            Tipi
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container mt-4">
+    <router-outlet></router-outlet>
+  </div>
+
+  <footer class="bg-dark text-light text-center py-3 mt-5">
+    <small>PokéExplorer — dati da pokeapi.co</small>
+  </footer>
+</div>

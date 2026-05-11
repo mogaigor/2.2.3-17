@@ -1,0 +1,97 @@
+<div class="mb-3">
+  <button class="btn btn-outline-secondary btn-sm" (click)="goBack()">
+    ← Indietro
+  </button>
+</div>
+
+@if (loading) {
+  <div class="text-center py-5">
+    <div class="spinner-border text-danger" role="status"></div>
+    <p class="mt-2">Caricamento dettagli...</p>
+  </div>
+}
+
+@if (!loading && pokemon) {
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card shadow">
+
+        <!-- Header card -->
+        <div class="card-header text-center bg-dark text-white">
+          <h2 class="text-capitalize mb-0">
+            {{ pokemon.name }}
+            <small class="text-muted fs-5">#{{ pokemon.id }}</small>
+          </h2>
+        </div>
+
+        <div class="card-body">
+
+          <!-- Sprite del pokemon -->
+          <div class="text-center mb-4">
+            @if (pokemon.sprites.front_default) {
+              <img
+                [src]="pokemon.sprites.front_default"
+                [alt]="pokemon.name"
+                style="width: 150px; image-rendering: pixelated;"
+              />
+            }
+            @if (pokemon.sprites.back_default) {
+              <img
+                [src]="pokemon.sprites.back_default"
+                [alt]="pokemon.name + ' retro'"
+                style="width: 150px; image-rendering: pixelated;"
+              />
+            }
+          </div>
+
+          <!-- Tipi -->
+          <div class="mb-3 text-center">
+            @for (t of pokemon.types; track t.type.name) {
+              <span class="badge bg-secondary me-1 px-3 py-2 text-capitalize">
+                {{ t.type.name }}
+              </span>
+            }
+          </div>
+
+          <!-- Peso e altezza -->
+          <div class="row text-center mb-4">
+            <div class="col-6">
+              <div class="card bg-light">
+                <div class="card-body py-2">
+                  <p class="mb-0 fw-bold">{{ pokemon.height / 10 }} m</p>
+                  <small class="text-muted">Altezza</small>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="card bg-light">
+                <div class="card-body py-2">
+                  <p class="mb-0 fw-bold">{{ pokemon.weight / 10 }} kg</p>
+                  <small class="text-muted">Peso</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Statistiche -->
+          <h5>Statistiche</h5>
+          @for (stat of pokemon.stats; track stat.stat.name) {
+            <div class="mb-2">
+              <div class="d-flex justify-content-between">
+                <small class="text-capitalize">{{ stat.stat.name }}</small>
+                <small class="fw-bold">{{ stat.base_stat }}</small>
+              </div>
+              <div class="progress" style="height: 8px;">
+                <div
+                  class="progress-bar bg-{{ getStatColor(stat.base_stat) }}"
+                  [style.width.%]="getStatPercent(stat.base_stat)"
+                ></div>
+              </div>
+            </div>
+          }
+
+        </div>
+      </div>
+    </div>
+  </div>
+}
