@@ -47,8 +47,9 @@
           <!-- Tipi -->
           <div class="mb-3 text-center">
             @for (t of pokemon.types; track t.type.name) {
-              <span class="badge bg-secondary me-1 px-3 py-2 text-capitalize">
-                {{ t.type.name }}
+              <span class="badge bg-secondary me-1 px-3 py-2 text-capitalize"
+              [routerLink]="['/pokemon', t.type.name]">
+                {{ t.type.name }}  
               </span>
             }
           </div>
