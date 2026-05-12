@@ -46,7 +46,7 @@ export class PokemonListComponent {
 
   // Estrae l'id dal url del pokemon (es: .../pokemon/4/ → "4")
   getPokemonId(url: string): string {
-    const parts = url.split('/').filter(p => p !== '');
+   const parts = url.split('/').filter(p => p !== '');
     return parts[parts.length - 1];
-  }
+  } 
 }

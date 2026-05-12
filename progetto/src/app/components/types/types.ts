@@ -6,7 +6,7 @@ import { PokemonType, TypesResponse } from '../../models/pokemon.models';
 import { CommonModule } from '@angular/common';
 
 // Le 3 categorie selezionate da mostrare
-const SELECTED_TYPES = ['fire', 'water', 'grass'];
+const SELECTED_TYPES = ['fire', 'water', 'grass', 'poison'];
 
 @Component({
   selector: 'app-types',
@@ -37,7 +37,8 @@ export class TypesComponent {
     const map: Record<string, string> = {
       fire: '🔥',
       water: '💧',
-      grass: '🌿'
+      grass: '🌿',
+      poison: '☠️'
     };
     return map[name] ?? '❓';
   }
@@ -47,7 +48,8 @@ export class TypesComponent {
     const map: Record<string, string> = {
       fire: 'danger',
       water: 'primary',
-      grass: 'success'
+      grass: 'success',
+      poison: 'dark'
     };
     return map[name] ?? 'secondary';
   }
